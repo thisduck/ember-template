@@ -15,3 +15,11 @@
  @apply .bg-blue-dark;
 }
 */
+
+h1, h2, h3, h4, h5, h6, p {
+  @apply .mb-2;
+}
+
+blockquote {
+  @apply .border-l-4 .ml-4 .pl-4;
+}
