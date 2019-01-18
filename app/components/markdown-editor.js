@@ -5,10 +5,22 @@ import Remarkable from 'remarkable';
 const md = new Remarkable();
 
 export default class MarkdownEditor extends Component {
-  @tracked text = "# hey\nthere."
+  @tracked formText = "# hey\n*there*.\n\n- what\n- is\n- up?";
+  @tracked text = '';
+  @tracked liveUpdate = false;
 
-  @tracked('text')
+  updateMarkdown() {
+    this.text = this.formText;
+  }
+
+  @tracked('text', 'formText', 'liveUpdate')
   get html() {
-    return htmlSafe(md.render(this.text));
+    let textToConvert = this.text;
+
+    if (this.liveUpdate) {
+      textToConvert = this.formText;
+    }
+
+    return htmlSafe(md.render(textToConvert));
   }
 }

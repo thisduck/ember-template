@@ -1,6 +1,16 @@
-<div class="w-full h-screen bg-grey-lightest flex flex-row">
-  <textarea class="h-full w-1/2 p-4" onkeyup={{action (mut text) value="target.value"}}>{{text}}</textarea>
-  <div class="h-full text-grey-dark w-1/2 p-4">
-    {{html}}
+<div class="w-full h-screen bg-grey-lightest flex flex-col">
+  <div class="w-full border-b-2">
+    <div class="h-full text-grey-darkest w-1/2 p-4 flex justify-between items-center">
+      <label>
+        {{input type="checkbox" checked=liveUpdate}} Live Update
+      </label>
+      <button class="px-4 py-2 text-white {{if liveUpdate "bg-grey" "bg-blue hover:bg-blue-dark"}} rounded hover:shadow" disabled={{liveUpdate}} {{action "updateMarkdown"}}>Save</button>
+    </div>
+  </div>
+  <div class="w-full h-screen bg-grey-lightest flex flex-row">
+    <textarea class="h-full w-1/2 p-4" onkeyup={{action (mut formText) value="target.value"}}>{{formText}}</textarea>
+    <div class="h-full text-grey-dark w-1/2 p-4">
+      {{html}}
+    </div>
   </div>
 </div>
